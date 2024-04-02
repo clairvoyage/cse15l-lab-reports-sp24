@@ -20,7 +20,7 @@
 ```
 **Absolute Path:** `/Users/merlin/Documents/coding/CSE15L/lecture1`
 
-**Explanation:** Changed working directory to `lecture1/messages`.
+**Explanation:** `cd messages/` changed the working directory to `lecture1/messages`.
 
 **Error?** No
 
@@ -46,7 +46,7 @@
 ```
 **Absolute Path:** `/Users/merlin/Documents/coding/CSE15L/lecture1`
 
-**Explanation:** Listed all files and directories in `lecture1`
+**Explanation:** `ls` listed all files and directories in `lecture1`
 
 **Error?** No
 
@@ -59,7 +59,7 @@
 ```
 **Absolute Path:** `/Users/merlin/Documents/coding/CSE15L/lecture1`
 
-**Explanation:** Listed all files and directories in `lecture1/messages`
+**Explanation:** `ls messages` listed all files and directories in `lecture1/messages`
 
 **Error?** No
 
@@ -72,7 +72,7 @@
 ```
 **Absolute Path:** `/Users/merlin/Documents/coding/CSE15L/lecture1`
 
-**Explanation:** Listed file's relative path.
+**Explanation:** `ls messages/en-us.txt` printed the entered path for `en-us.txt`.
 
 **Error?** No
 

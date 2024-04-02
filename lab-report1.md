@@ -7,6 +7,7 @@
 ```
 absolute path: `/Users/merlin/Documents/coding/CSE15L/lecture1`
 explanation: Without an argument, cd changes the working directory to the home directory.
+error? No
 
 - directory as argument:
 ```
@@ -15,6 +16,7 @@ explanation: Without an argument, cd changes the working directory to the home d
 ```
 absolute path: `/Users/merlin/Documents/coding/CSE15L/lecture1`
 explanation: Changed working directory to lecture1/messages.
+error? No
 
 - path to file as argument:
 ```
@@ -23,6 +25,7 @@ explanation: Changed working directory to lecture1/messages.
 ```
 absolute path: `/Users/merlin/Documents/coding/CSE15L/lecture1/messages`
 explanation: `cd` only changes to directories, not files.
+error? Yes, `cd` cannot change working directory to a file.
 
 ### `ls`
 - no arguments:
@@ -32,6 +35,7 @@ explanation: `cd` only changes to directories, not files.
 ```
 absolute path: `/Users/merlin/Documents/coding/CSE15L/lecture1`
 explanation: Listed all files and directories in lecture1
+error? No
 
 - directory as argument:
 ```
@@ -40,6 +44,7 @@ explanation: Listed all files and directories in lecture1
 ```
 absolute path: `/Users/merlin/Documents/coding/CSE15L/lecture1`
 explanation: Listed all files and directories in lecture1/messages
+error? No
 
 - path to file as argument:
 ```
@@ -48,18 +53,18 @@ explanation: Listed all files and directories in lecture1/messages
 ```
 absolute path: `/Users/merlin/Documents/coding/CSE15L/lecture1`
 explanation: Listed file's relative path.
-
+error? No
 
 ### `cat`
 - no arguments:
 ```
   merlin@Merlins-MacBook-Air lecture1 % cat
-  
-  
-  ^C
+  silly
+  silly
 ```
 absolute path: `/Users/merlin/Documents/coding/CSE15L/lecture1`
-explanation: Cat prints the contents of a file. Without a file as an argument, it prints nothing.
+explanation: `cat` prints the contents of a file. Without a file as an argument, it copies what you typed into the terminal until you exit the command.
+error? No
 
 - directory as argument:
 ```
@@ -68,6 +73,7 @@ explanation: Cat prints the contents of a file. Without a file as an argument, i
 ```
 absolute path: `/Users/merlin/Documents/coding/CSE15L/lecture1`
 explanation: Only prints file contents, not a directory
+error? Yes, `cat` only works to edit files.
 
 - path to file as argument:
 ```
@@ -75,5 +81,6 @@ explanation: Only prints file contents, not a directory
   Hello World!
 ```
 absolute path: `/Users/merlin/Documents/coding/CSE15L/lecture1`
-explanation: Printed contents of en-us.txt
+explanation: Printed contents of en-us.txt.
+error? No
 

@@ -99,7 +99,7 @@ what you typed into the terminal until you exit the command.
 ```
 **Absolute Path:** `/Users/merlin/Documents/coding/CSE15L/lecture1`
 
-**Explanation:** `cat` only prints file contents, not a directory
+**Explanation:** `cat` only prints file contents, not a directory.
 
 **Error?** Yes, `cat` only works to edit files.
 

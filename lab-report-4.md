@@ -32,7 +32,7 @@
 
 Afterwards, I ran `ls<enter>`. `ls` lists all the files and directories in the working directory. I ran this command to make sure I knew what the name of the file that runs the test is.
 
-Lastly, I ran `bash tes<tab>`. This command runs a bash file. I typed `tes<tab>` because the terminal will autofill the rest of the argument for my bash command to `test.sh`, which is the name of the file I am trying to run. I run the test and the output is the results of the test.
+Lastly, I ran `bash tes<tab>`. This command runs a bash file. I typed `tes<tab>` because the terminal will autofill the rest of the argument for my bash command to `test.sh`, which is the name of the file I am trying to run. I run the test and the output is the results of the test. According to the output, of the two tests run, one of them failed. It shows that the error occured on line 19 of `ListExamplesTests.java`, which stopped at line 42 from `ListExamples.java`. This means I should check `ListExamples.java` around line 42 to see where the bug is. 
 
 ## Step 7:
 
@@ -46,11 +46,13 @@ Lastly, I ran `bash tes<tab>`. This command runs a bash file. I typed `tes<tab>`
 
 (2) Keys pressed: `vim Lis<tab>.java<enter> :set number<enter>20j20jjjj ^whhr2<esc> :wq<enter>`
 
-(3) First, I typed `vim Lis<tab>.java<enter>` to edit the [`ListExamples.java`](http://ListExamples.java) file using vim. I typed `<tab>` to autofill the rest of `ListExamples` using just `Lis`. 
+(3) I am going to check `ListExamples.java` to try to find the bug that failed the test. First, I typed `vim Lis<tab>.java<enter>` to edit the [`ListExamples.java`](http://ListExamples.java) file using vim. I typed `<tab>` to autofill the rest of `ListExamples` using just `Lis`. 
 
 Afterwards, I typed `:set number<enter>` to add numbers to the side of my vim viewer so I can more easily tell where to jump to in the file to make my edits. I type `20j` twice to hop a total of 40 lines down to see more of the file. 
 
-At last, I see the line I have to change. I type `jjj` to move another three lines down to land exactly on the line I need to edit and type `^` to move to the start of the first non-blank character of my line. I then type `w` to jump to the end of the word I am changing, `index1,` and type `hh` to move my cursor on top of the character `1` to change the incorrect variable `index1` to `index2`. My cursor is on top of the `1` in `index1`, so I type `r2` to replace `1` with `2` to get `index2`. 
+At last, I see the line I have to change. There is a comment above line 44 indicating this is the line where there is a bug, and that I should change `index1` in this line to `index2`.
+
+I type `jjj` to move another three lines down to land exactly on the line I need to edit and type `^` to move to the start of the first non-blank character of my line. I then type `w` to jump to the end of the word I am changing, `index1,` and type `hh` to move my cursor on top of the character `1` to change the incorrect variable `index1` to `index2`. My cursor is on top of the `1` in `index1`, so I type `r2` to replace `1` with `2` to get `index2`. 
 
 I type `<esc>` to make sure I am still in command mode and then type `:wq` to save and quit editing the file.
 
@@ -62,7 +64,7 @@ I type `<esc>` to make sure I am still in command mode and then type `:wq` to sa
 
 (2) Key presses: `bash te<tab><enter>`
 
-(3) To test the file again, I type `bash te<tab>`, with the tab to autofill `te` to `test.sh`. I then press `<enter>` to run the command, and the successful test runs are printed to the command line.
+(3) To test the file again, I type `bash te<tab>`, with the tab to autofill `te` to `test.sh`. I then press `<enter>` to run the command, and the test runs are printed to the command line. The line `OK (2 tests)` indicates that both of my two tests ran successfully. 
 
 ## Step 9
 

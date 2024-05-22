@@ -1,5 +1,5 @@
 # Lab report 4 - Vim (Week 7)
-:3
+
 ## Step 4:
 
 (1) Screenshot:

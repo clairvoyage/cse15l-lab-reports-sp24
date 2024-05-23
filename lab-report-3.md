@@ -71,158 +71,138 @@ public void testReversedPass(){
 
 The original issue was that the method would return an array where each element was zero. This was because it assigned every element of `arr` to be an element of a `new int[]` array, which would have elements of 0. I fixed this by setting the `new` array to be equal to the corresponding elements of `arr` in reverse order. 
 
-# Part 2: Researching commands
+# Part 2: Researching commands: `grep`
 
-## `grep`
+## `grep -l`
 
-1. `grep` with | pipes output of command through `grep`. It can use `grep` as a filter for the output.
-    1. Example 1: In this example, I piped the output of `ls government/Gen_Account_Office` to `grep` and searched for `6.txt`. This is useful because I can use just one line to do a `grep` command to search from filesnames in a directory.
-        
-        ```java
-        merlin@Merlins-MacBook-Air technical % ls government/Gen_Account_Office | grep 6.txt
-        Sept27-2002_d02966.txt
-        og96026.txt
-        og96036.txt
-        og97046.txt
-        og98026.txt
-        og98046.txt
-        og99036.txt
-        merlin@Merlins-MacBook-Air technical % 
-        ```
-        
-    2. Example 2: In this example, I piped the output of `ls biomed` through `grep` and searched for `X-1`. This is useful because it can make it very simple to find files in any directory I want through the command line.
-        
-        ```java
-        merlin@Merlins-MacBook-Air technical % ls biomed | grep X-1
-        1471-213X-1-1.txt
-        1471-213X-1-10.txt
-        1471-213X-1-11.txt
-        1471-213X-1-12.txt
-        1471-213X-1-13.txt
-        1471-213X-1-15.txt
-        1471-213X-1-2.txt
-        1471-213X-1-3.txt
-        1471-213X-1-4.txt
-        1471-213X-1-6.txt
-        1471-213X-1-9.txt
-        1471-230X-1-10.txt
-        1471-230X-1-5.txt
-        1471-230X-1-6.txt
-        1471-230X-1-8.txt
-        1472-684X-1-5.txt
-        1476-069X-1-3.txt
-        1476-511X-1-2.txt
-        merlin@Merlins-MacBook-Air technical % 
-        
-        ```
-        
-2. `grep` can be used with a search term and file containing information
-    1. Example 1: I used `grep` to find all instances of the word ‘most’ in the file `chapter-13.3.txt`. This is useful because I don’t have to go directly to the file and type cmd+f to find if a word is in that file.
-    
-    ```java
-    merlin@Merlins-MacBook-Air technical % cd 911report
-    merlin@Merlins-MacBook-Air 911report % grep most chapter-13.3.txt 
-                    months after the invasion . . . almost the entire population of Kabul climbed on
-                    Azzam, Apr. 18, 1997. By most accounts, Bin Ladin initially viewed Azzam as a
-                    Iraq and al Qaeda regarding chemical weapons and explosives training, the most
-                    Juan O. Tamayo,"Mix-Up Almost Permitted Deportation of Men Suspected of Terrorist
-                    most economic and military assistance to Pakistan. Clinton administration officials
-                162. Mike interview (Jan. 6, 2004). Maher told us he thinks it "almost impossible"
-    merlin@Merlins-MacBook-Air 911report % 
-    
-    ```
-    
-    b. Example 2: I used `grep` to find all instances of the word `axis` in the file `1471-213X-1-2.txt`. This is useful because I could also redirect command line output into a text file for organization and use `grep` to find words in that text file easily.
-    
-    ```java
-    merlin@Merlins-MacBook-Air biomed % grep axis 1471-213X-1-2.txt 
-            along the dorsal-ventral axis [ 4]. All of these genes are
-            anterior-posterior axis of 
-              promoters in pBluescript with a Maxiscript kit (Ambion).
-    merlin@Merlins-MacBook-Air biomed % 
-    
-    ```
-    
-3. `grep` with a caret at the start of a regular expression, such as  `“^g”`, searches for lines starting with the regular expression
-    1. Example 1: I used `grep` to find all lines starting with `Alcohol` in `Session2-PDF.txt`. This is useful because I can filter `grep` specifically to only include my regular expression when it is at the start of a line.
-        
-        ```java
-        merlin@Merlins-MacBook-Air Alcohol_Problems % grep '^Alcohol' Session2-PDF.txt 
-        Alcohol problems defined
-        Alcohol problems designate a spectrum from risk behavior to
-        Alcohol concentration
-        Alcohol Use Disorders Identification Test in screening trauma
-        Alcohol Clin Exp Res 1987;11:269-73.
-        Alcohol Use Disorders Identification Test in screening trauma
-        Alcohol 1995;56:695-700.
-        Alcoholism. Criteria for the diagnosis of alcoholism. Am J
-        Alcohol. 1998;33:304-9.
-        Alcohol Clin Exp Res 1998;22:892-6.
-        Alcoholism screening in the elderly. J Am Geriatr Soc
-        Alcohol Depend 1993;33:139-49.
-        merlin@Merlins-MacBook-Air Alcohol_Problems % 
-        
-        ```
-        
-    2. Example 2: I used `grep` to find all lines starting with `be` in `Session4-PDF.txt`. This is useful because I could also do things like find lines that only start with a bullet point or only with a capital letter.
-        
-        ```java
-        merlin@Merlins-MacBook-Air Alcohol_Problems % grep '^be' Session4-PDF.txt
-        be needed to accomplish this goal. This paper describes the factors
-        believe that screening was the responsibility of emergency
-        believe that clinical judgment is reliable and formal screening is
-        be provided to emergency department personnel on a priority basis
-        because such funding will lead to their professional development,
-        because peer-reviewers do not view alcohol-related research as
-        being vital. There are equally formidable obstacles when attempting
-        because surveys consistently show that a substantial number of
-        be stigmatized. The laws are contained in the Code of Federal
-        because their primary function is not to provide substance abuse
-        been developed on the basis of evidence that treatment for
-        be a suitable outcome for emergency physicians.
-        be as important an outcome to ED staff as decreased re-visits to
-        be a useful source of follow-up data, as can a simple phone call to
-        merlin@Merlins-MacBook-Air Alcohol_Problems % 
-        
-        ```
-        
-4. `grep` + a regular expression with a dot ( . ) at the end like `‘an.’` to find any single series characters within any expression
-    1. Example 1: I used `grep` to find all instances of the series of letters `par` in `journal.pbio.0020001.txt`. This is useful because not only do I find the word `par` alone, I also find words containing `par` like `partial`.
-        
-        ```java
-        merlin@Merlins-MacBook-Air plos % grep 'par.' journal.pbio.0020001.txt 
-                several scientists, who present overwhelming evidence for the disparity in scientific
-                is a statistical bias on the part of the SCI as a bibliometric database, since it
-                2001). But is the disparity in scientific contributions between the developed and
-                focusing on the Americas as a case study. Not surprisingly, there was a huge disparity in
-                1990 as a comparison, revealed that scientific publishing in Latin America increased the
-                particularly from 1995 until 2000 (Figure 2).
-                picked up by the SCI in relation to the number of scientists in a particular country, also
-                productivity is remarkable when we compare it with the relatively low investment in science
-                itself as compared with the GDP of Latin America as a whole. In fact, Albornoz (2001)
-                effort compared with that of the United States (2.84%) and Canada (1.5%).
-                performed particularly well. For example, Uruguay, Chile, Panama, and Cuba averaged,
-                development investment in the 10 years studied, which is notoriously high compared with
-                is that scientific development during the 1990s was particularly strong for many countries
-                Latin America compared with the relatively flat increases in the United States and Canada,
-                twice as many publications to journals in the second category (8% in the top 11–20 compared
-                meetings for researchers in the developing compared with the developed world.
-                benefit from the contributions of many disparate groups around the world, rather than being
-                publications as a measure of scientific output, particularly if these publications can
-        merlin@Merlins-MacBook-Air plos % 
-        
-        ```
-        
-    2. Example 2: I used `grep` to find every instance of the sequence of characters in `plac` in `journal.pbio.0020267.txt`. This is useful because I can use it to find suffixes or prefixes relevant to what I am searching for.
-        
-        ```java
-        merlin@Merlins-MacBook-Air plos % grep 'plac.' journal.pbio.0020267.txt 
-                therapist physically restrains his hands, placing them back on the tabletop until he stops
-                in their brains—measured through a network of electrodes placed on the scalp—is similar
-                places can result in a “freezer full of fish.” He also says that parent organizations keep
-        merlin@Merlins-MacBook-Air plos % 
-        
-        ```
-        
+```
+merlin@Merlins-MacBook-Air 911report % grep -l his chapter-1.txt chapter-5.txt
+chapter-1.txt
+chapter-5.txt
+merlin@Merlins-MacBook-Air 911report % 
+```
 
-All commands for `grep` are from https://docs.oracle.com/cd/E19504-01/802-5826/6i9iclf5k/index.html
+`grep -l` shows both `chapter-5.txt` and `chapter-1.txt`, which means both of these files contain the word `his`.
+
+The special thing about `grep -l` is that it suppresses normal grep output and only prints the name of each input file from, which is useful if you only need the filenames of those that contain the word you are looking for.
+
+```
+merlin@Merlins-MacBook-Air 911report % grep -l strategy chapter-1.txt chapter-5.txt chapter-12.txt 
+chapter-12.txt
+merlin@Merlins-MacBook-Air 911report % 
+```
+
+I used `grep -l` again, but to search for the word strategy in three files: `chapter-5.txt, chapter-1.txt, chapter12.txt`. 
+
+Only `chapter12.txt` contains the word strategy, so `chapter-12.txt` is printed, which can be helpful to pipe filenames as arguments for another command.
+
+## `grep -r`
+
+```
+merlin@Merlins-MacBook-Air technical % grep -r 1600
+./government/Media/Greedy_Generous.txt:lawyers, the more than 1600 associates who donated to
+./plos/journal.pbio.0020439.txt:        studied medicine in Padua (1600–1602, while Galileo was active there), it was believed that
+./biomed/1471-2350-4-3.txt:          IgG 700 - 1600 mg/dL; IgG 
+./biomed/1471-2202-4-17.txt:            (1:1600) overnight at 4°C and visualized as described
+./biomed/1471-2164-4-21.txt:          (heterozygous NA16028 and homozygous NA16000). Other
+./biomed/1472-6793-2-16.txt:          200, 400, 600, 800, 1000, 1200, 1400, 1600, 1800, and
+./biomed/1471-2180-3-13.txt:          sequence as a probe. Position 1600321 of the 
+./biomed/cc1852.txt:          and photographed at a window width of 1600 Hounsfield
+./biomed/ar429.txt:          described [ 20 ] . The OD value obtained for the 1:1600
+./biomed/1475-9268-1-2.txt:          [Gibco No. 16000-036]; penicillin-streptomycin [10,000
+./911report/chapter-12.txt:                1600), the proposed National Preparedness Standard establishes a common set of
+merlin@Merlins-MacBook-Air technical % 
+
+```
+
+Here, I used `grep -r` to recursively search for for the term `1600` in each subdirectory and file of my working directory, docsearch. This is useful for searching for a term by looking through every file in the directory, including those in its subdirectories.
+
+```
+merlin@Merlins-MacBook-Air Alcohol_Problems % grep -r administered
+./Session2-PDF.txt:self-administered. An ideal screening test should not interfere
+./Session2-PDF.txt:MAST has been self-administered and used in a computer format. It
+./Session2-PDF.txt:of being self-administered, and it has also been administered in a
+./Session2-PDF.txt:studied when administered as a stand-alone test.35
+./Session2-PDF.txt:less information. Computer-administered or self-administered
+./Session2-PDF.txt:(e.g., interview, self-administered forms, and computer
+./Session2-PDF.txt:isolation and against other tests. A longer, self-administered
+./Session2-PDF.txt:screen-including one administered by computer-should also be tested
+./Session2-PDF.txt:effective. Self-administered questionnaires, computer screen
+./Session2-PDF.txt:28. Selzer M, Vinokur A, van Rooijen M. A self-administered
+./Session2-PDF.txt:computer-administered formats. Alcohol Clin Exp Res
+./Session4-PDF.txt:administered on the advice of a physician." Thirty-eight states
+merlin@Merlins-MacBook-Air Alcohol_Problems % 
+
+```
+
+In this example, I used `grep -r` inside of a much smaller directory, `docsearch/technical/government/Alcohol_Problems`. This is useful for quickly finding every instance of a term in a directory.
+
+## `grep -c`
+
+```
+merlin@Merlins-MacBook-Air 911report % grep -c church chapter-13.3.txt 
+2
+merlin@Merlins-MacBook-Air 911report % 
+```
+
+Using `grep -c`I printed the total number of lines containing the word church in the file `chapter13-3.txt` in the directory docsearch/technical/911report. This is useful for knowing the number of occurrences of a term in a file.
+
+```
+merlin@Merlins-MacBook-Air Post_Rate_Comm % grep -c mail Redacted_Study.txt    
+80
+merlin@Merlins-MacBook-Air Post_Rate_Comm % 
+```
+
+I used `grep -c` on the file `docsearch/technical/government/Post_Rate_CommRedacted_Study.txt`. According to the output, there are 80 total lines that contain a match for the word mail in `Redacted_Study.txt`, which can be helpful to know if I need to find which file contains the most instance of a word.
+
+## `grep -A num`
+
+```
+merlin@Merlins-MacBook-Air biomed % grep -A 3 luciferase  rr172.txt
+          Transfection with NFκB-luciferase reporter
+          constructs and assay for gene expression
+          A549 cells were grown to 50-80% confluence on 12-well
+          plates and transfected with the Mercury pathway profiling
+--
+          lysis buffer as supplied in the luciferase assay kit from
+          Clontech, scraped from the wells and centrifuged 1 min at
+          12,000 × 
+          g. Aliquots of 20 μl of each lysate
+--
+          transcriptional activation of luciferase reporter
+          construct
+          CSC appears to activate NFκB, which should result in
+          transcriptional activation of NFκB-inducible genes.
+          Therefore, A549 cells were transfected with a luciferase
+          reporter plasmid containing a promoter sequence that
+          bound NFκB and luciferase activity was measured after
+          challenge with CSC. Treatment with 0.4 μg/ml CSC for 30
+          min resulted in significant enhancement of luciferase
+          reporter expression compared to control (Fig. 4C),
+          indicating activation of NFκB. TNF-α used as a positive
+          control also activated luciferase gene expression with
+          the same plasmid system. Exposure of cells transfected
+          with the reporter plasmid to increasing doses of CSC
+          showed NFκB expression peaking at a CSC concentration
+--
+        supplied in the luciferase assay kit from Clontech, scraped
+        from the wells and centrifuged 1 min at 12,000 × 
+        g. Aliquots of 20 μl of each lysate
+        were transferred to flat-bottomed, white microtiter plates
+
+```
+
+I used `grep -A 3 surcharge Redacted_Study.txt`to print the line containing the pattern I was searching for, surcharge, plus the next three lines that are after the line containing the pattern. This can be helpful to find the context of what you are trying to find in a file.
+
+```
+merlin@Merlins-MacBook-Air biomed % grep -A 1 bovine  rr172.txt
+          USA). Fetal bovine serum was from Atlanta Biochemicals
+          (Atlanta, GA, USA). The culture medium (BEGM), growth
+--
+          bovine serum, 100 U/ml penicillin, 100 U/ml streptomycin,
+          and 250 ng/ml amphotericin-B in an atmosphere of 5%
+merlin@Merlins-MacBook-Air biomed % 
+
+```
+
+This time, `grep -A 1 bovine rr172.txt` printed out every occurrence of the word bovine in the file `rr172.txt` plus one additional line from the file after the line containing the word. This can be useful for finding what phrases commonly accompany your search pattern in your files.

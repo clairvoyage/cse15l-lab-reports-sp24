@@ -206,3 +206,5 @@ merlin@Merlins-MacBook-Air biomed %
 ```
 
 This time, `grep -A 1 bovine rr172.txt` printed out every occurrence of the word bovine in the file `rr172.txt` plus one additional line from the file after the line containing the word. This can be useful for finding what phrases commonly accompany your search pattern in your files.
+
+All grep commands are from https://www.gnu.org/software/grep/manual/grep.html.
